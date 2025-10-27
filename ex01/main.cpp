@@ -78,7 +78,7 @@ static int stoi_(const std::string &str, std::size_t *pos = 0) {
 
   ss >> std::ws;
   if (!(ss >> value))
-    throw std::invalid_argument("stoi_compat: invalid argument");
+    throw std::invalid_argument("stoi_: invalid argument");
 
   std::streampos consumed = ss.tellg();
   if (consumed == -1)
@@ -88,7 +88,7 @@ static int stoi_(const std::string &str, std::size_t *pos = 0) {
 
   if (value < std::numeric_limits<int>::min() ||
       value > std::numeric_limits<int>::max())
-    throw std::out_of_range("stoi_compat: out of range");
+    throw std::out_of_range("stoi_: out of range");
 
   return static_cast<int>(value);
 }
