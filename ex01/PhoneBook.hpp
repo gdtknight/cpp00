@@ -6,7 +6,7 @@
 /*   By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 22:25:54 by yoshin            #+#    #+#             */
-/*   Updated: 2025/10/26 22:28:40 by yoshin           ###   ########.fr       */
+/*   Updated: 2025/10/27 12:02:00 by yoshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 class PhoneBook {
 public:
   PhoneBook(void);
-  void addContact(const Contact &contact);
+  void addContact(Contact const &contact);
   void displayContacts(void);
   void displayContactDetails(size_t index);
 
 private:
   size_t sIdx;
-  size_t eIdx;
-  Contact contacts[MAX_CONTACTS + 1];
+  size_t size;
+  Contact contacts[MAX_CONTACTS];
+  static std::string truncateString(std::string const &str);
 };
 
 #endif

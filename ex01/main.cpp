@@ -6,7 +6,7 @@
 /*   By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 10:51:49 by yoshin            #+#    #+#             */
-/*   Updated: 2025/10/26 22:12:11 by yoshin           ###   ########.fr       */
+/*   Updated: 2025/10/27 12:50:50 by yoshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-std::string getInput(std::string const &prompt) {
+static std::string getInput(std::string const &prompt) {
   std::string input;
 
   while (true) {
@@ -38,7 +38,41 @@ std::string getInput(std::string const &prompt) {
   }
 }
 
-int stoi_compat(const std::string &str, std::size_t *pos = 0) {
+static std::string getNumericInput(std::string const &prompt) {
+  std::string input;
+
+  while (true) {
+    std::cout << prompt;
+    std::getline(std::cin, input);
+
+    if (std::cin.eof()) {
+      std::cout << "exit with unexpected eof" << std::endl;
+      exit(EXIT_FAILURE);
+    }
+
+    if (input.empty()) {
+      std::cout << "Field cannot be empty. Please try again." << std::endl;
+      continue;
+    }
+
+    // 숫자만 포함되어 있는지 검사
+    bool isNumeric = true;
+    for (std::string::size_type i = 0; i < input.size(); ++i) {
+      if (!std::isdigit(input[i])) {
+        isNumeric = false;
+        break;
+      }
+    }
+
+    if (!isNumeric) {
+      std::cout << "Phone Number must contain only digits. Please try again."
+                << std::endl;
+    } else
+      return (input);
+  }
+}
+
+static int stoi_(const std::string &str, std::size_t *pos = 0) {
   std::stringstream ss(str);
   long long value = 0;
   std::string parsed;
@@ -63,30 +97,34 @@ int stoi_compat(const std::string &str, std::size_t *pos = 0) {
   return static_cast<int>(value);
 }
 
-void add(PhoneBook &phoneBook) {
+static void add(PhoneBook &phoneBook) {
   Contact newContact;
 
   newContact.setFirstName(getInput("Enter first name: "));
   newContact.setLastName(getInput("Enter last name: "));
   newContact.setNickname(getInput("Enter nickname: "));
-  newContact.setPhoneNumber(getInput("Enter phone number: "));
+  newContact.setPhoneNumber(getNumericInput("Enter phone number: "));
   newContact.setDarkestSecret(getInput("Enter darkest secret: "));
+
   phoneBook.addContact(newContact);
   std::cout << "Contact added!" << std::endl;
 }
 
-void search(PhoneBook &phoneBook) {
-  phoneBook.displayContacts();
+static void search(PhoneBook &phoneBook) {
   std::string index_str;
   int index;
+
+  phoneBook.displayContacts();
+
   std::cout << "Enter the index of the entry to display: ";
   std::getline(std::cin, index_str);
   if (std::cin.eof()) {
     std::cout << "exit with unexpected eof" << std::endl;
     exit(EXIT_FAILURE);
   }
+
   try {
-    index = stoi_compat(index_str);
+    index = stoi_(index_str);
     phoneBook.displayContactDetails(index);
   } catch (const std::invalid_argument &e) {
     std::cout << e.what() << std::endl;
@@ -110,7 +148,7 @@ static void banner(void)
 // clang-format on
 
 int main() {
-	PhoneBook phoneBook;
+  PhoneBook phoneBook;
   std::string command;
 
   banner();
