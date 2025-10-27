@@ -12,9 +12,6 @@ int Account::getTotalAmount(void) { return (_totalAmount); }
 int Account::getNbDeposits(void) { return (_totalNbDeposits); }
 int Account::getNbWithdrawals(void) { return (_totalNbWithdrawals); }
 
-/*
- * [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
- */
 void Account::displayAccountsInfos(void) {
   _displayTimestamp();
   std::cout << "accounts:" << _nbAccounts << ";"
@@ -23,9 +20,6 @@ void Account::displayAccountsInfos(void) {
             << "withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
-/*
- * [19920104_091532] index:0;amount:42;created
- */
 Account::Account(int initial_deposit)
     : _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0),
       _nbWithdrawals(0) {
@@ -38,9 +32,6 @@ Account::Account(int initial_deposit)
   _totalAmount += initial_deposit;
 }
 
-/*
- * [19920104_091532] index:0;amount:47;closed
- */
 Account::~Account(void) {
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";"
@@ -50,9 +41,6 @@ Account::~Account(void) {
   _totalAmount -= _amount;
 }
 
-/*
- * [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
- */
 void Account::makeDeposit(int deposit) {
   int p_amount = _amount;
 
@@ -69,13 +57,8 @@ void Account::makeDeposit(int deposit) {
             << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
-// clang-format off
-/*
- * [19920104_091532] index:0;p_amount:47;withdrawal:refused
- * [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
- */
-// clang-format on
 bool Account::makeWithdrawal(int withdrawal) {
+  _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";"
             << "p_amount:" << _amount << ";";
 
@@ -95,9 +78,6 @@ bool Account::makeWithdrawal(int withdrawal) {
 
 int Account::checkAmount(void) const { return (_amount); }
 
-/*
- * [19920104_091532] index:7;amount:8942;deposits:1;withdrawals:1
- */
 void Account::displayStatus(void) const {
   _displayTimestamp();
   std::cout << "index:" << _accountIndex << ";"
@@ -108,7 +88,7 @@ void Account::displayStatus(void) const {
 
 void Account::_displayTimestamp(void) {
   char buffer[80];
-  time_t now = time(nullptr);
+  time_t now = time(NULL);
   struct tm *local = localtime(&now);
   strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", local);
   std::cout << buffer;

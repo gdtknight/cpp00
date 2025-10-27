@@ -55,7 +55,6 @@ static std::string getNumericInput(std::string const &prompt) {
       continue;
     }
 
-    // 숫자만 포함되어 있는지 검사
     bool isNumeric = true;
     for (std::string::size_type i = 0; i < input.size(); ++i) {
       if (!std::isdigit(input[i])) {
@@ -77,19 +76,16 @@ static int stoi_(const std::string &str, std::size_t *pos = 0) {
   long long value = 0;
   std::string parsed;
 
-  // 공백 제거 없이 숫자 읽기
-  ss >> std::ws;      // 앞쪽 공백 무시
-  if (!(ss >> value)) // 숫자 읽기 실패 시
+  ss >> std::ws;
+  if (!(ss >> value))
     throw std::invalid_argument("stoi_compat: invalid argument");
 
-  // 숫자 다음 문자열 위치 계산
   std::streampos consumed = ss.tellg();
   if (consumed == -1)
     consumed = static_cast<std::streampos>(str.size());
   if (pos)
     *pos = static_cast<std::size_t>(consumed);
 
-  // 범위 검사 (int 범위 벗어남)
   if (value < std::numeric_limits<int>::min() ||
       value > std::numeric_limits<int>::max())
     throw std::out_of_range("stoi_compat: out of range");
