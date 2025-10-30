@@ -13,7 +13,7 @@
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-NAME		=	account
+NAME		=	tests
 
 SRCS		=	tests.cpp Account.cpp
 HEADERS		=	Account.hpp
