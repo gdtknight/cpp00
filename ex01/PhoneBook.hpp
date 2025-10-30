@@ -21,6 +21,7 @@
 class PhoneBook {
 public:
   PhoneBook(void);
+
   void addContact(Contact const &contact);
   void displayContacts(void);
   void displayContactDetails(size_t index);
@@ -29,6 +30,7 @@ private:
   size_t sIdx;
   size_t size;
   Contact contacts[MAX_CONTACTS];
+
   static std::string truncateString(std::string const &str);
 };
 
