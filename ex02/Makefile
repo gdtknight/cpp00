@@ -6,7 +6,7 @@
 #    By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 17:41:00 by yoshin            #+#    #+#              #
-#    Updated: 2025/10/30 17:41:00 by yoshin           ###   ########.fr        #
+#    Updated: 2025/10/30 21:39:26 by yoshin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,3 +31,6 @@ clean:
 fclean: clean
 
 re: fclean all
+
+dev: $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -g -o $(NAME).dev
