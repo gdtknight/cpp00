@@ -1,8 +1,24 @@
-NAME = phonebook
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
-HEADERS = PhoneBook.hpp Contact.hpp
-CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/10/30 17:41:03 by yoshin            #+#    #+#              #
+#    Updated: 2025/10/30 17:41:03 by yoshin           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CXX 		=	c++
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+
+NAME		=	phonebook
+
+SRCS		=	main.cpp PhoneBook.cpp Contact.cpp
+HEADERS		=	PhoneBook.hpp Contact.hpp
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
@@ -15,5 +31,3 @@ clean:
 fclean: clean
 
 re: fclean all
-
-.PHONY: all clean fclean re
