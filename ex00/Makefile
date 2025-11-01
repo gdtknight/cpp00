@@ -6,7 +6,7 @@
 #    By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 17:41:06 by yoshin            #+#    #+#              #
-#    Updated: 2025/10/30 21:10:08 by yoshin           ###   ########.fr        #
+#    Updated: 2025/11/01 12:40:51 by yoshin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	megaphone
 SRCS		=	megaphone.cpp
 HEADERS		= 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re dev
 
 all: $(NAME)
 

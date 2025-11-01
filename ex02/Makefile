@@ -6,7 +6,7 @@
 #    By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 17:41:00 by yoshin            #+#    #+#              #
-#    Updated: 2025/10/30 21:39:26 by yoshin           ###   ########.fr        #
+#    Updated: 2025/11/01 12:40:39 by yoshin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	tests
 SRCS		=	tests.cpp Account.cpp
 HEADERS		=	Account.hpp
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re dev
 
 all: $(NAME)
 

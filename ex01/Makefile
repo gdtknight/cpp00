@@ -6,7 +6,7 @@
 #    By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/30 17:41:03 by yoshin            #+#    #+#              #
-#    Updated: 2025/10/30 21:34:11 by yoshin           ###   ########.fr        #
+#    Updated: 2025/11/01 12:40:45 by yoshin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	phonebook
 SRCS		=	main.cpp PhoneBook.cpp Contact.cpp
 HEADERS		=	PhoneBook.hpp Contact.hpp
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re dev
 
 all: $(NAME)
 
