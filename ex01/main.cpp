@@ -6,7 +6,7 @@
 /*   By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 10:51:49 by yoshin            #+#    #+#             */
-/*   Updated: 2025/10/27 12:50:50 by yoshin           ###   ########.fr       */
+/*   Updated: 2025/11/02 16:32:25 by yoshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,8 @@ static void search(PhoneBook &phoneBook) {
   int index;
 
   phoneBook.displayContacts();
+  if (phoneBook.getSize() == 0)
+    return;
 
   std::cout << "Enter the index of the entry to display: ";
   std::getline(std::cin, index_str);

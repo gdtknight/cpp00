@@ -6,7 +6,7 @@
 /*   By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 22:25:54 by yoshin            #+#    #+#             */
-/*   Updated: 2025/10/27 12:02:00 by yoshin           ###   ########.fr       */
+/*   Updated: 2025/11/02 16:30:45 by yoshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
   void addContact(Contact const &contact);
   void displayContacts(void);
   void displayContactDetails(size_t index);
+  size_t getSize(void);
 
 private:
   size_t sIdx;

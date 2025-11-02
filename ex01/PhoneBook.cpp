@@ -6,7 +6,7 @@
 /*   By: yoshin <yoshin@student.42gyeongsan.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 22:25:56 by yoshin            #+#    #+#             */
-/*   Updated: 2025/10/27 12:18:38 by yoshin           ###   ########.fr       */
+/*   Updated: 2025/11/02 16:49:43 by yoshin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,24 @@ void PhoneBook::addContact(Contact const &contact) {
   ;
 }
 
+// clang-format off
 void PhoneBook::displayContacts() {
-  std::cout << "|";
-  std::cout << std::right << std::setw(10) << "INDEX" << "|";
-  std::cout << std::right << std::setw(10) << "FIRST NAME" << "|";
-  std::cout << std::right << std::setw(10) << "LAST NAME" << "|";
-  std::cout << std::right << std::setw(10) << "NICKNAME" << "|" << std::endl;
-  std::cout << "|";
-  std::cout << "----------" << "|";
-  std::cout << "----------" << "|";
-  std::cout << "----------" << "|";
-  std::cout << "----------" << "|" << std::endl;
+  std::cout << std::endl
+            << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------" << "+" << std::endl;
+  std::cout << "|"
+            << std::right << std::setw(10) << "INDEX" << "|"
+            << std::right << std::setw(10) << "FIRST NAME" << "|"
+            << std::right << std::setw(10) << "LAST NAME" << "|"
+            << std::right << std::setw(10) << "NICKNAME" << "|"
+            << std::endl;
+  std::cout << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------" << "+" << std::endl;
 
-  // clang-format off
   for (size_t idx = 0; idx < size; idx++) {
     std::cout << "|";
     std::cout << std::right << std::setw(10) << (idx + 1) << "|"
@@ -55,6 +60,12 @@ void PhoneBook::displayContacts() {
       << std::endl;
   }
   // clang-format on
+  std::cout << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------"
+            << "+" << "----------"
+            << "+" << std::endl
+            << std::endl;
 }
 
 void PhoneBook::displayContactDetails(size_t index) {
@@ -63,12 +74,16 @@ void PhoneBook::displayContactDetails(size_t index) {
 
   Contact const &contact = contacts[(sIdx + index - 1) % MAX_CONTACTS];
 
-  std::cout << "First Name: " << contact.getFirstName() << std::endl;
-  std::cout << "Last Name: " << contact.getLastName() << std::endl;
-  std::cout << "Nickname: " << contact.getNickname() << std::endl;
-  std::cout << "Phone Number: " << contact.getPhoneNumber() << std::endl;
-  std::cout << "Darkest Secret: " << contact.getDarkestSecret() << std::endl;
+  std::cout << std::endl
+            << "First Name     : " << contact.getFirstName() << std::endl
+            << "Last Name      : " << contact.getLastName() << std::endl
+            << "Nickname       : " << contact.getNickname() << std::endl
+            << "Phone Number   : " << contact.getPhoneNumber() << std::endl
+            << "Darkest Secret : " << contact.getDarkestSecret() << std::endl
+            << std::endl;
 }
+
+size_t PhoneBook::getSize(void) { return (size); }
 
 std::string PhoneBook::truncateString(std::string const &str) {
   if (str.length() > 10) {
